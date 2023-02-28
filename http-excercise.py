@@ -1,5 +1,6 @@
 import requests
 import time
+from datetime import datetime
 
 def show_html(response):
     text = response.text
@@ -23,9 +24,17 @@ def show_headers(response):
         print(f"name: {k} value: {v}")
 
 def show_cookies(response) :
-    #for k,v in response.cookies.items():
-        #print(f"name: {k}   value: {v}")
-    print(response.cookies)
+    cookies = response.cookies
+    expires = None
+    print("####Cookie List####")
+    for cookie in cookies:
+        try:
+            expires = cookie.expires
+            expires = datetime.fromtimestamp(expires)
+            print(f"Name: {cookie.name}  expires  {expires}")
+        except:
+            print(f"Name: {cookie.name}")
+
 
 def show_test(response):
     print(response.headers["Server"])
