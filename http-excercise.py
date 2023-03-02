@@ -2,6 +2,8 @@ import requests
 import time
 from datetime import datetime
 
+#https://github.com/Dev1072656/web-lab
+
 def show_html(response):
     text = response.text
     count = 0 
